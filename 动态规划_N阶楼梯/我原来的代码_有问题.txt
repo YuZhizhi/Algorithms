@@ -1,0 +1,40 @@
+/*
+*在数目比较小的情况是可以的，但是数目大了就没办法计算阶乘，所以会出现浮点错误，解法可以参*考解题思路
+*/
+#include<stdio.h>
+#include<math.h>
+
+int factorial(int m){//阶乘
+	if(m==0)return 1;
+	int i=1;
+	int result=1;
+	while(i<=m){
+		result*=i++;
+	}
+	return result;
+}
+
+int Combination(int a,int b){
+	return factorial(a+b)/(factorial(a)*factorial(b));
+}
+int main(){
+	int N;
+	int i,j;
+	int count=0;
+	while(scanf("%d",&N)!=EOF){
+		count=0;
+	if(N!=0){
+		for(i=0;i<=N;i++){
+			for(j=0;j<=N/2;j++){
+				//一个排列组合问题 i个1，j个2，有多少种排列方式
+				if(N==i+j*2){
+					count+=Combination(i,j);
+				}
+			}
+		}
+	}
+		printf("%d\n",count);
+	}
+	return 0;
+}
+
